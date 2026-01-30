@@ -12,15 +12,20 @@ public class RangesClass {
      private final int From;
      private final int To;
      private final String label;
-    public RangesClass(int From, int To,String Label){
+     private int Grade;
+    public RangesClass(int From, int To,String Label,int Grade){
        this.From = From;
        this.To = To;
        this.label = Label;
+       this.Grade = Grade;
     }
     public boolean isInRange(int mark){
-        return mark>this.From&&mark<this.To;
+        return mark>=this.From&&mark<=this.To;
     }
-    public String GetGrade(){
+    public String GetLabel(){
      return this.label;
+    }
+    public int GetGrade(){
+        return this.Grade;
     }
 }
