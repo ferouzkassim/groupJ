@@ -26,8 +26,9 @@ public class Money {
     }
     public static Money minus(Money value1, Money Value2) throws Exception{
       double newprice = value1.value-Value2.value;
-      if(value1.currency == null ? Value2.currency != null : !value1.currency.equals(Value2.currency)){
-       throw new Exception("currency not the same ");
+      if(!Value2.currency.equals(value1.currency)){
+          throw new Exception("currency not the same ");
+      } else {
       }
      
       return new Money(newprice,value1.currency);

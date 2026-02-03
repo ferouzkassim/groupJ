@@ -35,13 +35,13 @@ public class PartB {
         while(biddingList.toArray().length<3){
          System.out.println("Enter Your Name Bidder");
          String name = MySc.next();
-         System.out.println("Just to Confirm all your bids will be in $");
-         Bidders newBider = new Bidders(name,"$");
+         System.out.println("Just to Confirm all your bids will be in "+ curen);
+         Bidders newBider = new Bidders(name,curen);
          biddingList.add(newBider);
         }
         System.out.println("now lets bid !! ### cash coming in");
         int bidtimes = 1;
-        while(bidtimes>=10){
+        while(bidtimes<=2){
         for(Bidders e:biddingList){
             if(!e.isClosed()){
           System.out.println("hey "+e.getName()+ "\tplace your bid");
@@ -51,7 +51,7 @@ public class PartB {
             System.out.println(e.getName()+ "\tbids\t"+bidde+ "$");
             System.out.println("Press x to close your final bit or press any key to continue");
             String c = MySc.next();
-            if(c=="x"||c=="X"){
+            if("x".equals(c)||"X".equals(c)){
                 e.CloseBide();
             }
             }
@@ -63,13 +63,13 @@ public class PartB {
         }
         
         System.out.println("Bidding Closed ");
-        Bidders highestBidder = null;
+        Bidders highestBidder = new Bidders("","");
         for(Bidders x: biddingList){
            if(x.AMiMax(biddingList)){
             highestBidder=x;
            }
         }
-        System.out.println(benz.MakeName()+ "Sold to\n"+highestBidder.getName()+"\n for "+highestBidder.getTotalBid()+"at" + benz.ProfitOrLoss(highestBidder.getActulaMoney()));
+        System.out.println(benz.MakeName()+ "Sold to\n"+highestBidder.getName()+"\n for "+highestBidder.getTotalBid()+"at a" + benz.ProfitOrLoss(highestBidder.getActulaMoney())+"\nof\n" );
         
         
     }

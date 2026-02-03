@@ -14,10 +14,11 @@ public class Bidders {
     //these are peopel who wll bid for the auction;
     private final String name;
     private Money totalBid;
-    private boolean bidingClosed = false;
+    private boolean bidingClosed;
     public Bidders(String name, String Currency){
       this.totalBid = new Money(0,Currency);
       this.name = name;
+      this.bidingClosed = false;
     }
     public void Bid (double money){
      this.totalBid.AddMoney(money);

@@ -4,6 +4,9 @@
  */
 package groupjoop.groupj;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author DROID
@@ -27,5 +30,12 @@ public class RangesClass {
     }
     public int GetGrade(){
         return this.Grade;
+    }
+    public List<Integer> GetRanges(){
+     ArrayList<Integer> datalist = new ArrayList<>();
+     for(int i=this.From;i<=this.To;i++){
+        datalist.add(i);
+     }
+     return datalist;
     }
 }

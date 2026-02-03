@@ -28,23 +28,18 @@ public class GroupJ {
          int[] gradecounts = new int[10];
         while(numberOfIterations!=5){
             System.out.println("Kindly enter the next student's marks");
-          
             int resStud = myScanner.nextInt();
             marks[numberOfIterations] = resStud;
-          
             numberOfIterations++;
             //gradecounts[res]++;
-            
         }
         System.out.println("Summary ");
         for(int e: marks){
           Calculator(e,true);
-          
          }
         for(int i=1; i<=9;i++){
          System.out.println("Grades "+i+":"+ gradecounts[i]+"students");
         }
-        
     }
     static void Calculator (int mark,boolean showGrade){
         RangesClass D1 = new RangesClass(80,100,"D1",1);
