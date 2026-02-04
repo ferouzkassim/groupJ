@@ -30,6 +30,9 @@ public class question2 extends javax.swing.JFrame {
         GetDepartments();
         GetGender();
       
+       
+       
+      
       
     }
 
@@ -92,6 +95,7 @@ public class question2 extends javax.swing.JFrame {
         jComboBox2 = new javax.swing.JComboBox<>();
         jComboBox3 = new javax.swing.JComboBox<>();
         jTextField1 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -109,12 +113,18 @@ public class question2 extends javax.swing.JFrame {
         jMenu1.setText("jMenu1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(null);
 
         label1.setFont(new java.awt.Font("Arial", 1, 12)); // NOI18N
         label1.setText("New Student Registration Form");
 
         jLabel1.setText("Student First Name");
 
+        jTextPane1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextPane1FocusLost(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTextPane1);
 
         jScrollPane2.setViewportView(jTextPane2);
@@ -127,11 +137,34 @@ public class question2 extends javax.swing.JFrame {
 
         jLabel4.setText("Confirm Email Address");
 
+        jTextPane5.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jTextPane5FocusLost(evt);
+            }
+        });
+        jTextPane5.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextPane5KeyPressed(evt);
+            }
+        });
         jScrollPane5.setViewportView(jTextPane5);
 
         jLabel6.setText("Confirm Password");
 
         jLabel7.setText("Password");
+
+        jPasswordField1.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPasswordField1FocusLost(evt);
+            }
+        });
+
+        jPasswordField2.setToolTipText("passowrd");
+        jPasswordField2.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                jPasswordField2FocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -249,14 +282,9 @@ public class question2 extends javax.swing.JFrame {
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(220, 220, 220)
-                        .addComponent(jRadioButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(24, 24, 24)
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(59, 59, 59)
+                        .addGap(26, 26, 26)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jRadioButton3)
                             .addComponent(jRadioButton4)
@@ -267,13 +295,18 @@ public class question2 extends javax.swing.JFrame {
                                     .addComponent(jButton1)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton2))
-                                .addComponent(jRadioButton2)))))
-                .addContainerGap(67, Short.MAX_VALUE))
+                                .addComponent(jRadioButton2))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(220, 220, 220)
+                        .addComponent(jRadioButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jRadioButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton6)
                     .addComponent(jRadioButton7))
@@ -307,7 +340,7 @@ public class question2 extends javax.swing.JFrame {
         label2.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         label2.setText("Your Data is Below");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select-Month", "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -321,11 +354,20 @@ public class question2 extends javax.swing.JFrame {
             }
         });
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "select-day" }));
+        jComboBox3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox3ActionPerformed(evt);
+            }
+        });
 
         jTextField1.setEditable(false);
         jTextField1.setBackground(new java.awt.Color(225, 225, 225));
+        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jTextField1.setToolTipText("");
         jTextField1.setDragEnabled(true);
+
+        jLabel9.setText("Year");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -335,30 +377,31 @@ public class question2 extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(194, 194, 194)
+                                .addGap(296, 296, 296)
                                 .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(285, 285, 285)
-                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(118, 118, 118)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)))
+                        .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -379,16 +422,17 @@ public class question2 extends javax.swing.JFrame {
                         .addComponent(jLabel8)
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel9))
                     .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(110, 110, 110))
+                        .addGap(125, 125, 125))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 317, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -462,7 +506,7 @@ public class question2 extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
-      int[] daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+      int[] daysInMonth = {0,31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
         var modelList = jComboBox1.getModel();
       var strr = (String) jComboBox1.getSelectedItem();
       for(int x=0;x<modelList.getSize();x++){
@@ -500,6 +544,60 @@ public class question2 extends javax.swing.JFrame {
         
         ResetForm();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextPane5KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextPane5KeyPressed
+       this.checkConditions();
+    }//GEN-LAST:event_jTextPane5KeyPressed
+
+    private void jTextPane5FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextPane5FocusLost
+          this.checkConditions();
+    }//GEN-LAST:event_jTextPane5FocusLost
+
+    private void jTextPane1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextPane1FocusLost
+           this.checkConditions();
+    }//GEN-LAST:event_jTextPane1FocusLost
+
+    private void jPasswordField1FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField1FocusLost
+           this.checkConditions();
+    }//GEN-LAST:event_jPasswordField1FocusLost
+
+    private void jPasswordField2FocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jPasswordField2FocusLost
+           this.checkConditions();
+    }//GEN-LAST:event_jPasswordField2FocusLost
+
+    private void jComboBox3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox3ActionPerformed
+    private boolean checkConditions(){
+     var p1 = String.valueOf(jPasswordField1.getPassword());
+     var p2 = String.valueOf(jPasswordField2.getPassword());
+     PasswordChecker pch = new PasswordChecker(p1,p2);
+      try{
+        if((pch.IsSame()||pch.StaisfyConditions())==false){
+             
+                jButton1.setEnabled(false);
+               return false;
+                
+            }
+        else{
+            if(jTextPane5.getText() == null ? jTextPane1.getText() != null : !jTextPane5.getText().equals(jTextPane1.getText())){
+                    jButton1.setEnabled(false);
+          return false;
+     }
+              jButton1.setEnabled(true);
+             return true;
+        }
+            
+             
+      }
+      catch (Exception ex){
+       return false;
+      }
+          
+        
+     
+    }
+    
     private void ResetForm(){
      var coms = this.getComponents();
      for(Component e:coms){
@@ -579,6 +677,7 @@ public class question2 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;

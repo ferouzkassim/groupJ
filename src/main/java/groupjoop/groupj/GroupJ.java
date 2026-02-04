@@ -23,15 +23,16 @@ public class GroupJ {
         //number one stops here 
        
         int numberOfIterations = 0;
-         System.out.println("number 1ai");
+         System.out.println("\n\n number 1 aii)");
          int[] marks =new int[5];
          int[] gradecounts = new int[10];
         while(numberOfIterations!=5){
             System.out.println("Kindly enter the next student's marks");
             int resStud = myScanner.nextInt();
             marks[numberOfIterations] = resStud;
+            int gradeNum = Calculator(resStud, true);
+            gradecounts[gradeNum]++;
             numberOfIterations++;
-            //gradecounts[res]++;
         }
         System.out.println("Summary ");
         for(int e: marks){
@@ -41,7 +42,7 @@ public class GroupJ {
          System.out.println("Grades "+i+":"+ gradecounts[i]+"students");
         }
     }
-    static void Calculator (int mark,boolean showGrade){
+    static int Calculator (int mark,boolean showGrade){
         RangesClass D1 = new RangesClass(80,100,"D1",1);
         RangesClass D2 = new RangesClass(75,89,"D2",2);
         RangesClass C3 = new RangesClass(66,74,"C3",3);
@@ -51,23 +52,22 @@ public class GroupJ {
         RangesClass P7 = new RangesClass(35,44,"P7",7);
         RangesClass P8 = new RangesClass(30,34,"P8",8);
         RangesClass F = new RangesClass(0,29,"F",9);
-        ArrayList<RangesClass> rangesList = new ArrayList<RangesClass>(Arrays.asList(
+        ArrayList<RangesClass> rangesList = new ArrayList<>(Arrays.asList(
         D1,D2,C3,C4,C5,C6,P7,P8,F
         ));
      
-        rangesList.forEach(e->{
-               if(e.isInRange(mark)){
-               
-                if(showGrade){
-                System.out.println(e.GetLabel()+" " + "Grade->"+e.GetGrade());
+       for (RangesClass e : rangesList) {
+            if (e.isInRange(mark)) {
+                if (showGrade) {
+                    System.out.println(e.GetLabel() + " Grade->" + e.GetGrade());
+                } else {
+                    System.out.println("The Remark is " + e.GetLabel());
                 }
-                else{
-                    System.out.println("the Remark is " + e.GetLabel());
-                }
-                
-               }
-             
-        }); 
+                return e.GetGrade();
+            }
+        }
+
+        return -1;
       
     }
        

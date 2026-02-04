@@ -11,15 +11,19 @@ import java.util.regex.Pattern;
  * @author DROID
  */
 public class PasswordChecker {
-    private String passone;
-    private String passtwo;
+    private final String passone;
+    private final String passtwo;
     public PasswordChecker(String passwordone,String passwordtwo){
      this.passone = passwordone;
      this.passtwo = passwordtwo;
     }
     public boolean IsSame() throws Exception  {
-      if(this.passone==null) throw new Exception("Cant compare empty");
-      if(this.passtwo==null) throw new Exception("One of the passowrds is empty");
+      if(this.passone==null) {
+          throw new Exception("Cant compare empty");
+      }
+      if(this.passtwo==null) {
+          throw new Exception("One of the passowrds is empty");
+      }
       return (this.passone == null ? this.passtwo == null : this.passone.equals(this.passtwo));
     }
     public boolean StaisfyConditions(){
