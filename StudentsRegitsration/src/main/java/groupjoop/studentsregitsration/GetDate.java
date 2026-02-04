@@ -6,6 +6,8 @@ package groupjoop.studentsregitsration;
 
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 /**
@@ -21,6 +23,7 @@ public class GetDate {
      RangesClass rgs = new RangesClass(16,60,"",1);
      var res = rgs.GetRanges();
      Vector<String> yeaars = new Vector<>();
+    
      for(int r:res){
       int yeat =  this.today.getYear()-r;
      
@@ -28,6 +31,6 @@ public class GetDate {
      }
      return yeaars;
     }
-    
+   
 }
 
